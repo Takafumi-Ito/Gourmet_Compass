@@ -1,0 +1,209 @@
+<head>
+    <%= stylesheet_link_tag "Mainstyle" %>
+    <script language="javascript">
+        var doll_num = 1;
+        var select_num = 1;
+        function doll1_click(){
+            document.getElementById("doll1").src = "/assets/doll1_black.png";
+            document.getElementById("doll2").src = "/assets/doll2_gray.png";
+            document.getElementById("doll3").src = "/assets/doll3_gray.png";
+            document.getElementById("doll4").src = "/assets/doll4_gray.png";
+            doll_num = 1;
+        }
+        function doll2_click(){
+            document.getElementById("doll1").src = "/assets/doll1_gray.png";
+            document.getElementById("doll2").src = "/assets/doll2_black.png";
+            document.getElementById("doll3").src = "/assets/doll3_gray.png";
+            document.getElementById("doll4").src = "/assets/doll4_gray.png";
+            doll_num = 2;
+        }
+        function doll3_click(){
+            document.getElementById("doll1").src = "/assets/doll1_gray.png";
+            document.getElementById("doll2").src = "/assets/doll2_gray.png";
+            document.getElementById("doll3").src = "/assets/doll3_black.png";
+            document.getElementById("doll4").src = "/assets/doll4_gray.png";
+            doll_num = 3;
+        }
+        function doll4_click(){
+            document.getElementById("doll1").src = "/assets/doll1_gray.png";
+            document.getElementById("doll2").src = "/assets/doll2_gray.png";
+            document.getElementById("doll3").src = "/assets/doll3_gray.png";
+            document.getElementById("doll4").src = "/assets/doll4_black.png";
+            doll_num = 4;
+        }
+        function chinese_click(){
+            document.getElementById("chinese").src = "/assets/Chinese_black.png";
+            document.getElementById("italian").src = "/assets/Italian_gray.png";
+            document.getElementById("japanese").src = "/assets/Japanese_gray.png";
+            document.getElementById("ramen").src = "/assets/Ramen_gray.png";
+            document.getElementById("izakaya").src = "/assets/Izakaya_gray.png";
+            document.getElementById("cafe").src = "/assets/Cafe_gray.png";
+            document.getElementById("steak").src = "/assets/Steak_gray.png";
+            document.getElementById("curry").src = "/assets/Curry_gray.png";
+            document.getElementById("ethnic").src = "/assets/Ethnic_gray.png";
+            select_num = 1;
+        }
+        function italian_click(){
+            document.getElementById("chinese").src = "/assets/Chinese_gray.png";
+            document.getElementById("italian").src = "/assets/Italian_black.png";
+            document.getElementById("japanese").src = "/assets/Japanese_gray.png";
+            document.getElementById("ramen").src = "/assets/Ramen_gray.png";
+            document.getElementById("izakaya").src = "/assets/Izakaya_gray.png";
+            document.getElementById("cafe").src = "/assets/Cafe_gray.png";
+            document.getElementById("steak").src = "/assets/Steak_gray.png";
+            document.getElementById("curry").src = "/assets/Curry_gray.png";
+            document.getElementById("ethnic").src = "/assets/Ethnic_gray.png";
+            select_num = 2;
+        }
+        function japanese_click(){
+            document.getElementById("chinese").src = "/assets/Chinese_gray.png";
+            document.getElementById("italian").src = "/assets/Italian_gray.png";
+            document.getElementById("japanese").src = "/assets/Japanese_black.png";
+            document.getElementById("ramen").src = "/assets/Ramen_gray.png";
+            document.getElementById("izakaya").src = "/assets/Izakaya_gray.png";
+            document.getElementById("cafe").src = "/assets/Cafe_gray.png";
+            document.getElementById("steak").src = "/assets/Steak_gray.png";
+            document.getElementById("curry").src = "/assets/Curry_gray.png";
+            document.getElementById("ethnic").src = "/assets/Ethnic_gray.png";
+            select_num = 3;
+        }
+        function ramen_click(){
+            document.getElementById("chinese").src = "/assets/Chinese_gray.png";
+            document.getElementById("italian").src = "/assets/Italian_gray.png";
+            document.getElementById("japanese").src = "/assets/Japanese_gray.png";
+            document.getElementById("ramen").src = "/assets/Ramen_black.png";
+            document.getElementById("izakaya").src = "/assets/Izakaya_gray.png";
+            document.getElementById("cafe").src = "/assets/Cafe_gray.png";
+            document.getElementById("steak").src = "/assets/Steak_gray.png";
+            document.getElementById("curry").src = "/assets/Curry_gray.png";
+            document.getElementById("ethnic").src = "/assets/Ethnic_gray.png";
+            select_num = 4;
+        }
+        function izakaya_click(){
+            document.getElementById("chinese").src = "/assets/Chinese_gray.png";
+            document.getElementById("italian").src = "/assets/Italian_gray.png";
+            document.getElementById("japanese").src = "/assets/Japanese_gray.png";
+            document.getElementById("ramen").src = "/assets/Ramen_gray.png";
+            document.getElementById("izakaya").src = "/assets/Izakaya_black.png";
+            document.getElementById("cafe").src = "/assets/Cafe_gray.png";
+            document.getElementById("steak").src = "/assets/Steak_gray.png";
+            document.getElementById("curry").src = "/assets/Curry_gray.png";
+            document.getElementById("ethnic").src = "/assets/Ethnic_gray.png";
+            select_num = 5;
+        }
+        function cafe_click(){
+            document.getElementById("chinese").src = "/assets/Chinese_gray.png";
+            document.getElementById("italian").src = "/assets/Italian_gray.png";
+            document.getElementById("japanese").src = "/assets/Japanese_gray.png";
+            document.getElementById("ramen").src = "/assets/Ramen_gray.png";
+            document.getElementById("izakaya").src = "/assets/Izakaya_gray.png";
+            document.getElementById("cafe").src = "/assets/Cafe_black.png";
+            document.getElementById("steak").src = "/assets/Steak_gray.png";
+            document.getElementById("curry").src = "/assets/Curry_gray.png";
+            document.getElementById("ethnic").src = "/assets/Ethnic_gray.png";
+            select_num = 6;
+        }
+        function steak_click(){
+            document.getElementById("chinese").src = "/assets/Chinese_gray.png";
+            document.getElementById("italian").src = "/assets/Italian_gray.png";
+            document.getElementById("japanese").src = "/assets/Japanese_gray.png";
+            document.getElementById("ramen").src = "/assets/Ramen_gray.png";
+            document.getElementById("izakaya").src = "/assets/Izakaya_gray.png";
+            document.getElementById("cafe").src = "/assets/Cafe_gray.png";
+            document.getElementById("steak").src = "/assets/Steak_black.png";
+            document.getElementById("curry").src = "/assets/Curry_gray.png";
+            document.getElementById("ethnic").src = "/assets/Ethnic_gray.png";
+            select_num = 7;
+        }
+        function curry_click(){
+            document.getElementById("chinese").src = "/assets/Chinese_gray.png";
+            document.getElementById("italian").src = "/assets/Italian_gray.png";
+            document.getElementById("japanese").src = "/assets/Japanese_gray.png";
+            document.getElementById("ramen").src = "/assets/Ramen_gray.png";
+            document.getElementById("izakaya").src = "/assets/Izakaya_gray.png";
+            document.getElementById("cafe").src = "/assets/Cafe_gray.png";
+            document.getElementById("steak").src = "/assets/Steak_gray.png";
+            document.getElementById("curry").src = "/assets/Curry_black.png";
+            document.getElementById("ethnic").src = "/assets/Ethnic_gray.png";
+            select_num = 8;
+        }
+        function ethnic_click(){
+            document.getElementById("chinese").src = "/assets/Chinese_gray.png";
+            document.getElementById("italian").src = "/assets/Italian_gray.png";
+            document.getElementById("japanese").src = "/assets/Japanese_gray.png";
+            document.getElementById("ramen").src = "/assets/Ramen_gray.png";
+            document.getElementById("izakaya").src = "/assets/Izakaya_gray.png";
+            document.getElementById("cafe").src = "/assets/Cafe_gray.png";
+            document.getElementById("steak").src = "/assets/Steak_gray.png";
+            document.getElementById("curry").src = "/assets/Curry_gray.png";
+            document.getElementById("ethnic").src = "/assets/Ethnic_black.png";
+            select_num = 9;
+        }
+
+        function start_click(){
+            var slider_data = document.getElementById('slider');
+            var data = doll_num + select_num * 10 + 100 * slider_data.value;
+            // + Number(document.getElementById('slider'))
+            console.log(data);
+            window.location.href = 'recommend/'+String(data);
+        }
+
+    </script>
+</head>
+
+<body>
+    <div class="center">
+        <%= image_tag "logo.jpg", id: "logo" %><br>
+        <!-- <%= link_to("recommend") do %> -->
+        <button type="button" onclick = "start_click()" id="start-button"><%= image_tag 'start.jpg',id: "start" %></button><br>
+        <%end%>
+        <h2>
+            <%= image_tag 'stop.jpg', id: "stop" %>
+            <input type="range" id="slider" name="walkDistance" min="1" max="30" step="1">
+            <%= image_tag 'walking.jpg', id: "walking" %><br>
+            <div class="dollButton">
+                <button type="button" onclick = "doll1_click()" class="doll">
+                    <%= image_tag 'doll1_black', name: "doll1", alt: "$" ,class: "doll_image", id: "doll1"%>
+                </button>
+                <button type="button" onclick = "doll2_click()" class="doll">
+                    <%= image_tag 'doll2_gray', name: "doll2", alt: "$$" ,class: "doll_image", id: "doll2" %>
+                </button>
+                <button type="button" onclick = "doll3_click()" class="doll">
+                    <%= image_tag 'doll3_gray', name: "doll3", alt: "$$$" ,class: "doll_image", id: "doll3"%>
+                </button>
+                <button type="button" onclick = "doll4_click()" class="doll">
+                    <%= image_tag 'doll4_gray', name: "doll4", alt: "$$$$" ,class: "doll_image", id: "doll4"%>
+                </button>
+            </div>
+            <div class="filter">
+                <button type="button" onclick = "chinese_click()" class="filter_button">
+                    <%= image_tag 'Chinese_black', title: "chinese", alt: "Chinese" ,class: "select", id: "chinese" %>
+                </button>
+                <button type="button" onclick = "italian_click()" class="filter_button">
+                    <%= image_tag 'Italian_gray', title: "italian", alt: "Italian" ,class: "select", id: "italian"%>
+                </button>
+                <button type="button" onclick = "japanese_click()" class="filter_button">
+                    <%= image_tag 'Japanese_gray', title: "japanese", alt: "Japanese" ,class: "select", id: "japanese"%>
+                </button><br>
+                <button type="button" onclick = "ramen_click()" class="filter_button">
+                    <%= image_tag 'Ramen_gray', title: "ramen", alt: "Ramen" ,class: "select", id: "ramen"%>
+                </button>
+                <button type="button" onclick = "izakaya_click()" class="filter_button">
+                    <%= image_tag 'Izakaya_gray', title: "izakaya", alt: "Izakaya" ,class: "select", id: "izakaya"%>
+                </button>
+                <button type="button" onclick = "cafe_click()" class="filter_button">
+                    <%= image_tag 'Cafe_gray', title: "cafe", alt: "Cafe" ,class: "select", id: "cafe"%>
+                </button><br>
+                <button type="button" onclick = "steak_click()" class="filter_button">
+                    <%= image_tag 'Steak_gray', title: "steak", alt: "Steak" ,class: "select", id: "steak"%>
+                </button>
+                <button type="button" onclick = "curry_click()" class="filter_button">
+                    <%= image_tag 'Curry_gray', title: "curry", alt: "Curry" ,class: "select", id: "curry"%>
+                </button>
+                <button type="button" onclick = "ethnic_click()" class="filter_button">
+                    <%= image_tag 'Ethnic_gray', title: "ethnic", alt: "Ethnic" ,class: "select", id: "ethnic"%>
+                </button><br>
+            </div>
+        </h2>
+    </div>
+</body>

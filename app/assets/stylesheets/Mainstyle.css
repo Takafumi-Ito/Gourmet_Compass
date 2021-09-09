@@ -1,0 +1,60 @@
+div.center {
+    text-align: center;
+}
+body{
+    background-color: #fe9623;
+}
+#logo{
+    width:40%;
+    height:auto; 
+}
+
+#start-button{
+    padding: 0;
+    border: none;
+    width:100px;
+    height:100px;
+}
+#start{
+    width:100px;
+    height:100px;
+    display: block;
+}
+#stop{
+    width:60px;
+    height:60px;
+}
+#walking{
+    width:60px;
+    height:60px;
+}
+
+.select{
+    width: 90px;
+    height: 90px;
+    display: block;
+    background-color: #fe9623;
+}
+
+.filter_button{
+    padding: 0;
+    border: none;
+    width: 90px;
+    height: 90px;
+    background-color: #fe9623;
+}
+
+.doll_image{
+    width: 90px;
+    height: 90px;
+    display: block;
+    background-color: #fe9623;
+}
+
+.doll{
+    padding: 0;
+    border: none;
+    width: 90px;
+    height: 90px;
+    background-color: #fe9623;
+}

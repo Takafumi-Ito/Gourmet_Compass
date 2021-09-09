@@ -1,0 +1,146 @@
+<head>
+    <meta charset="UTF-8">
+    <%= stylesheet_link_tag "style" %>
+</head>
+
+<body>
+    <div id="map"></div>
+    <script>
+    var placesList;
+    var params = location.href.split("/");
+    console.log(params[4]);
+    function initMap() {
+        var placesList = new Array();
+        var price = Number(params[4]) % 10;
+        console.log("price:" + price);
+        var shoptype = 'restaurant';
+        var keyword_num = ((Number(params[4]) % 100) - price)/10;
+        var keywordInput = "イタリアン";
+        switch(keyword_num){
+            case 1:
+                keywordInput = "中華料理";
+            break;
+            case 2:
+                keywordInput = "イタリアン";
+            break;
+            case 3:
+                keywordInput = "和食";
+            break;
+            case 4:
+                keywordInput = "ラーメン";
+            break;
+            case 5:
+                keywordInput = "居酒屋";
+            break;
+            case 6:
+                keywordInput = "カフェ";
+            break;
+            case 7:
+                keywordInput = "ステーキ";
+            break;
+            case 8:
+                keywordInput = "カレー";
+            break;
+            case 9:
+                keywordInput = "エスニック";
+            break;
+            default:
+                keywordInput = "エスニック";
+            break;
+        }
+        console.log("keywordInput:" + keywordInput);
+        var slider_num = (Number(params[4]) - keyword_num*10 - price)/100
+        if (navigator.geolocation){
+               // 現在地を取得
+            navigator.geolocation.getCurrentPosition(
+                    // 取得成功した場合
+                function(position) {
+                    var mapLatLng = new google.maps.LatLng(position.coords.latitude,position.coords.longitude);
+                    var map = new google.maps.Map(document.getElementById('map'),{center: mapLatLng,zoom:  3,disableDefaultUI:true, scrollwheel:false,clickableIcons:false,draggable:false,disableDoubleClickZoom:true,keyboardShortcuts:false});
+                    //var marker = new google.maps.Marker({map : map, position : mapLatLng});
+                    var service = new google.maps.places.PlacesService(map);
+                    let directionService = new google.maps.DirectionsService();
+                    var kekka = 4;
+                    var hantei = 0.0;
+                    service.nearbySearch(
+                        {
+                            location: mapLatLng,
+                            radius: 1000,
+                            type: [shoptype],
+                            openNow: false,
+                            minprice: price,
+                            maxprice: price,
+                            keyword: keywordInput,
+                        },
+                        function(results,status,pegination){
+                            placesList = placesList.concat(results);
+                            console.log(placesList);
+                            if(pegination.hasNextPage){
+                                setTimeout(pegination.nextPage(), 1000);
+                            }else{
+                                for (var i = 0; i < 10; i++){
+                                    if(placesList[i].rating == undefined){
+                                        placesList[i].rating = -1;
+                                        console.log("未定義")
+                                    }
+                                    console.log(i)
+                                    directionService.route({
+                                        origin: mapLatLng,
+                                        destination:placesList[i].geometry.location,
+                                        travelMode: google.maps.DirectionsTravelMode.WALKING
+                                    },function(response,status){
+                                        if(status == "OK"){
+                                            console.log(i)
+                                            //var place = placesList[i];
+                                            var rating = placesList[i].rating;
+                                            var kyori = response.routes[0].legs[0].distance.value;
+                                            var score = rating + ((slider_num+8)/19)*(1125/(kyori+125));
+                                            if(hantei < score){
+                                                kekka = i;
+                                                hantei = score;
+                                                //alert(kekka)
+                                                //console.log(kyori)
+                                                //console.log(hantei)
+                                                //console.log(kekka)
+                                            }
+                                        }
+                                    })
+                                    //console.log(i)
+                                }
+                            }
+                            var marker = new google.maps.Marker({map : map, position : placesList[kekka].geometry.location});
+                            console.log("https://www.google.com/maps/search/?api=1&query_place_id="+placesList[kekka].place_id)
+                            //console.log("https://google.com/maps/search/?api=1&query="+String(placesList[kekka].geometry.location.lat())+","+String(placesList[kekka].geometry.location.lng()))
+                            google.maps.event.addListener(marker, 'click', function(){
+                                 window.location.href ="https://www.google.com/maps/place/?q=place_id:"+placesList[kekka].place_id;
+                             });
+                        }
+                    )
+                       
+                },
+                    // 取得失敗した場合
+                function(error) {
+                    switch(error.code) {
+                        case 1: //PERMISSION_DENIED
+                            alert("位置情報の利用が許可されていません");
+                            break;
+                        case 2: //POSITION_UNAVAILABLE
+                            alert("現在位置が取得できませんでした");
+                            break;
+                        case 3: //TIMEOUT
+                            alert("タイムアウトになりました");
+                            break;
+                        default:
+                            alert("その他のエラー(エラーコード:"+error.code+")");
+                            break;
+                    }
+                }
+            );
+        }
+    }
+    
+
+
+    </script>
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAWAXp7y5sY6xrzZ2vCADHwrhaFqj_G8Xg&callback=initMap&libraries=,geometry,places" async defer></script>
+</body>
