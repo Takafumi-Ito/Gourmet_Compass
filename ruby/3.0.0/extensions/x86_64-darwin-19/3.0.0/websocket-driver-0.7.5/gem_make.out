@@ -1,0 +1,15 @@
+current directory: /Users/itoutakafumi/Documents/グルメコンパス/Gourmet_Compass/ruby/3.0.0/gems/websocket-driver-0.7.5/ext/websocket-driver
+/Users/itoutakafumi/.rbenv/versions/3.0.1/bin/ruby -I /Users/itoutakafumi/.rbenv/versions/3.0.1/lib/ruby/3.0.0 -r ./siteconf20210911-63722-se1j78.rb extconf.rb
+creating Makefile
+
+current directory: /Users/itoutakafumi/Documents/グルメコンパス/Gourmet_Compass/ruby/3.0.0/gems/websocket-driver-0.7.5/ext/websocket-driver
+make DESTDIR\= clean
+
+current directory: /Users/itoutakafumi/Documents/グルメコンパス/Gourmet_Compass/ruby/3.0.0/gems/websocket-driver-0.7.5/ext/websocket-driver
+make DESTDIR\=
+compiling websocket_mask.c
+linking shared-object websocket_mask.bundle
+
+current directory: /Users/itoutakafumi/Documents/グルメコンパス/Gourmet_Compass/ruby/3.0.0/gems/websocket-driver-0.7.5/ext/websocket-driver
+make DESTDIR\= install
+/usr/bin/install -c -m 0755 websocket_mask.bundle ./.gem.20210911-63722-bmlea7
