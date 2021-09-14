@@ -8,11 +8,11 @@
     <script>
     var placesList;
     var params = location.href.split("/");
-    console.log(params[4]);
+    //console.log(params[4]);
     function initMap() {
         var placesList = new Array();
         var price = Number(params[4]) % 10;
-        console.log("price:" + price);
+        //console.log("price:" + price);
         var shoptype = 'restaurant';
         var keyword_num = ((Number(params[4]) % 100) - price)/10;
         var keywordInput = "イタリアン";
@@ -49,7 +49,7 @@
                 keywordInput = "エスニック";
             break;
         }
-        console.log("keywordInput:" + keywordInput);
+        //console.log("keywordInput:" + keywordInput);
         var slider_num = (Number(params[4]) - keyword_num*10 - price)/100
         if (navigator.geolocation){
                // 現在地を取得
@@ -61,8 +61,11 @@
                     //var marker = new google.maps.Marker({map : map, position : mapLatLng});
                     var service = new google.maps.places.PlacesService(map);
                     let directionService = new google.maps.DirectionsService();
-                    var kekka = 4;
-                    var hantei = 0.0;
+                    //var kekka = -1;
+                    //var hantei = 0.0;
+                    var scoresList = new Array();
+                    var randomNumber = Math.random();
+                    console.log(randomNumber);
                     service.nearbySearch(
                         {
                             location: mapLatLng,
@@ -75,46 +78,64 @@
                         },
                         function(results,status,pegination){
                             placesList = placesList.concat(results);
-                            console.log(placesList);
+                            //console.log(placesList);
                             if(pegination.hasNextPage){
                                 setTimeout(pegination.nextPage(), 1000);
                             }else{
-                                for (var i = 0; i < 10; i++){
-                                    if(placesList[i].rating == undefined){
-                                        placesList[i].rating = -1;
-                                        console.log("未定義")
-                                    }
-                                    console.log(i)
-                                    directionService.route({
-                                        origin: mapLatLng,
-                                        destination:placesList[i].geometry.location,
-                                        travelMode: google.maps.DirectionsTravelMode.WALKING
-                                    },function(response,status){
-                                        if(status == "OK"){
-                                            console.log(i)
-                                            //var place = placesList[i];
-                                            var rating = placesList[i].rating;
-                                            var kyori = response.routes[0].legs[0].distance.value;
-                                            var score = rating + ((slider_num+8)/19)*(1125/(kyori+125));
-                                            if(hantei < score){
-                                                kekka = i;
-                                                hantei = score;
-                                                //alert(kekka)
-                                                //console.log(kyori)
-                                                //console.log(hantei)
-                                                //console.log(kekka)
-                                            }
+                                const promise = new Promise((resolve,reject) => {
+                                    for (var i = 0; i < 10; i++){
+                                        if(placesList[i].rating == undefined){
+                                            placesList[i].rating = -1;
+                                            console.log("未定義")
                                         }
-                                    })
+                                        //console.log(i)
+                                        directionService.route({
+                                            origin: mapLatLng,
+                                            destination:placesList[i].geometry.location,
+                                            travelMode: google.maps.DirectionsTravelMode.WALKING
+                                        },function(response,status){
+                                            if(status == "OK"){
+                                                //console.log(i)
+                                                //var place = placesList[i];
+                                                var rating = placesList[i].rating;
+                                                var kyori = response.routes[0].legs[0].distance.value;
+                                                var score = (rating + ((slider_num+8)/19)*(1125/(kyori+125)))/40.0;
+                                                randomNumber -= score;
+                                                if(randomNumber <= 0){
+                                                    //kekka = i;
+                                                    resolve()
+                                                }
+                                                scoresList.push(score);
+                                                console.log(score);
+                                                //if(hantei < score){
+                                                    //kekka = i;
+                                                    //hantei = score;
+                                                    //alert(kekka)
+                                                    //console.log(kyori)
+                                                    //console.log(hantei)
+                                                    //console.log(kekka)
+                                                //}
+                                            }
+                                        });
                                     //console.log(i)
                                 }
+                                });
+
+                                function lastMove(){
+                                    //console.log(kekka);
+                                    //console.log(scoreSum);
+                                    console.log(scoresList);
+                                    var marker = new google.maps.Marker({map : map, position : placesList[scoresList.length - 1].geometry.location});
+                                    console.log("https://www.google.com/maps/search/?api=1&query_place_id="+placesList[scoresList.length - 1].place_id)
+                                    //console.log("https://google.com/maps/search/?api=1&query="+String(placesList[scoresList.length - 1].geometry.location.lat())+","+String(placesList[scoresList.length - 1].geometry.location.lng()))
+                                    google.maps.event.addListener(marker, 'click', function(){
+                                        window.location.href ="https://www.google.com/maps/search/?api=1&query="+placesList[scoresList.length - 1].latitude + "%2C" + placesList[scoresList.length - 1].longitude + "&query_place_id="+placesList[scoresList.length - 1].place_id;
+                                    });
+                                }
+                                promise.then(() => lastMove());
+
                             }
-                            var marker = new google.maps.Marker({map : map, position : placesList[kekka].geometry.location});
-                            console.log("https://www.google.com/maps/search/?api=1&query_place_id="+placesList[kekka].place_id)
-                            //console.log("https://google.com/maps/search/?api=1&query="+String(placesList[kekka].geometry.location.lat())+","+String(placesList[kekka].geometry.location.lng()))
-                            google.maps.event.addListener(marker, 'click', function(){
-                                 window.location.href ="https://www.google.com/maps/search/?api=1&query="+placesList[kekka].latitude + "%2C" + placesList[kekka].longitude + "&query_place_id="+placesList[kekka].place_id;
-                             });
+                            
                         }
                     )
                        
