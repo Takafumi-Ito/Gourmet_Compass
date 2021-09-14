@@ -113,7 +113,7 @@
                             console.log("https://www.google.com/maps/search/?api=1&query_place_id="+placesList[kekka].place_id)
                             //console.log("https://google.com/maps/search/?api=1&query="+String(placesList[kekka].geometry.location.lat())+","+String(placesList[kekka].geometry.location.lng()))
                             google.maps.event.addListener(marker, 'click', function(){
-                                 window.location.href ="https://www.google.com/maps/place/?q=place_id:"+placesList[kekka].place_id;
+                                 window.location.href ="https://www.google.com/maps/search/?api=1&query="+placesList[kekka].latitude + "%2C" + placesList[kekka].longitude + "&query_place_id="+placesList[kekka].place_id;
                              });
                         }
                     )
