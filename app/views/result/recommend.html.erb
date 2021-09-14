@@ -123,8 +123,9 @@
 
                                 function lastMove(){
                                     //console.log(kekka);
-                                    //console.log(scoreSum);
+                                    console.log(scoresList.length);
                                     console.log(scoresList);
+                                    console.log(placesList);
                                     var marker = new google.maps.Marker({map : map, position : placesList[scoresList.length - 1].geometry.location});
                                     console.log("https://www.google.com/maps/search/?api=1&query_place_id="+placesList[scoresList.length - 1].place_id)
                                     //console.log("https://google.com/maps/search/?api=1&query="+String(placesList[scoresList.length - 1].geometry.location.lat())+","+String(placesList[scoresList.length - 1].geometry.location.lng()))
