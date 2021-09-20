@@ -78,9 +78,12 @@
                         },
                         function(results,status,pegination){
                             placesList = placesList.concat(results);
+                            while (placesList.length < 10){
+                                placesList = placesList.concat(placesList[0]);
+                            }
                             //console.log(placesList);
                             if(pegination.hasNextPage){
-                                setTimeout(pegination.nextPage(), 1000);
+                                setTimeout(pegination.nextPage(), 10000);
                             }else{
                                 const promise = new Promise((resolve,reject) => {
                                     for (var i = 0; i < 10; i++){
